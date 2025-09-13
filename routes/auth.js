@@ -17,14 +17,6 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ msg: 'User already exists' });
         }
 
-        // Special handling for the designated admin user
-        if (username === 'rubanpaul') {
-            if (password !== '13579') {
-                return res.status(400).json({ msg: 'Invalid password for rubanpaul' });
-            }
-            role = 'admin'; // Force role to admin for rubanpaul
-        }
-
         user = new User({
             username,
             password,

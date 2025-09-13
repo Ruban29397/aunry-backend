@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const Video = require('../models/Video');
 const auth = require('../middleware/authMiddleware');
-const admin = require('../middleware/adminMiddleware');
+// const admin = require('../middleware/adminMiddleware'); // Removed as adminMiddleware is deleted
 
 const router = express.Router();
 
@@ -38,7 +38,7 @@ const upload = multer({
 // @route   POST api/videos/upload
 // @desc    Upload a new video (admin only)
 // @access  Private (Admin)
-router.post('/upload', auth, admin, (req, res) => {
+router.post('/upload', auth, (req, res) => {
     upload(req, res, async (err) => {
         if (err) {
             console.error(err);
